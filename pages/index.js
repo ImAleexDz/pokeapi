@@ -6,25 +6,13 @@ const url = 'https://pokeapi.co/api/v2/pokemon';
 
 const Home = ({ data, hasError }) => {
 
-  const [pokepic, setPokepic] = useState('')
-
-  // useEffect(() => {
-  //   console.log(pokepic)
-  // }, [pokepic])
-
-  const getPokepic = async(pokename) => {
-    await axios(`${url}/${pokename}`).then(response => setPokepic(response.data.sprites.front_default))
-  }
-
   const display = () => {
     if (data.results) {
       let pokemons = data.results.map((elements, i) => {
         let pokename = elements.name;
-        getPokepic(elements.name)
         
         return (
           <div>
-            {/* <img src={image} height={100} width={100} /> */}
             <p>
               {pokename}
             </p>
